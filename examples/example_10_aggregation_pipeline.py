@@ -9,10 +9,7 @@ if __name__ == "__main__":
 
         # Find total numbers of awards for each distinct award
         documents = biographies.aggregate(
-            [
-                {"$unwind": "$awards"},
-                {"$group": {"_id": "$awards.award", "total": {"$sum": 1}}}
-            ]
+            [{"$unwind": "$awards"}, {"$group": {"_id": "$awards.award", "total": {"$sum": 1}}}]
         )
 
         print("> Awards and total number they were awarded")
