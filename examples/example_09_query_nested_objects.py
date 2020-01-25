@@ -8,7 +8,9 @@ if __name__ == "__main__":
         biographies = db["biographies"]
 
         # Find all people that received Turing Award
-        documents = biographies.find({"awards": {"$elemMatch": {"award": "Turing Award"}}}, ["name.last", "awards.award"])
+        documents = biographies.find(
+            {"awards": {"$elemMatch": {"award": "Turing Award"}}}, ["name.last", "awards.award"]
+        )
 
         for document in documents:
             print(document["name"]["last"], document["awards"])
