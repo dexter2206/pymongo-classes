@@ -8,7 +8,7 @@ if __name__ == "__main__":
     # DELETES
     # EVERYTHING
     with MongoClient() as client:
-        products_db = client["products-db"]["products-info"].drop()
+        client["products-db"]["products-info"].drop()
 
     with open("products.json") as products_file:
         documents = [loads(line) for line in products_file]
